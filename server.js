@@ -21,8 +21,6 @@ app.set("view engine", "handlebars");
 
 app.use(router);
 
-//connecting to mongo
-//var db = require("./models");
 
 mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
 
