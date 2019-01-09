@@ -10,6 +10,9 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 var router = express.Router();
 
+//require routes
+require("./config/routes")(router);
+
 //designate public folder and set up handlebars with express app
 app.use(express.static(__dirname + "/public"));
 app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
@@ -19,7 +22,7 @@ app.set("view engine", "handlebars");
 app.use(router);
 
 //connecting to mongo
-var db = require("./models");
+//var db = require("./models");
 
 mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
 
@@ -28,3 +31,4 @@ mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
 app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
 });
+
