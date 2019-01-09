@@ -1,8 +1,7 @@
 var db = require("../models");
 var axios = require("axios");
 var cheerio = require("cheerio");
-
-
+var Article = require("../models/Article");
 
 module.exports = function (router) {
     router.get("/", function (req, res) {
@@ -23,18 +22,32 @@ module.exports = function (router) {
 
             $(".post-block").each(function (i, element) {
 
-                var title = $(element).find(".post-block__title").children().text().trim();
-                var link = $(element).find(".post-block__title").children().attr("href");
-                var summary = $(element).find(".post-block__content").text().trim();
+                var result = {};
 
-                db.Article.create({
-                    title: title,
-                    link: link,
-                    summary: summary
+                result.title = $(element).find(".post-block__title").children().text().trim();
+                result.link = $(element).find(".post-block__title").children().attr("href");
+                result.summary = $(element).find(".post-block__content").text().trim();
+
+                // Using our Article model, create a new entry
+                // This effectively passes the result object to the entry (and the title and link)
+                var entry = new Article(result);
+
+                // Now, save that entry to the db
+                entry.save(function (err, doc) {
+                    // Log any errors
+                    if (err) {
+                        console.log(err);
+                    }
+                    // Or log the doc
+                    else {
+                        console.log(doc);
+                    }
                 });
 
             });
+            res.redirect('/');
         });
+
     });
 
     router.get("/articles/:id", function (req, res) {

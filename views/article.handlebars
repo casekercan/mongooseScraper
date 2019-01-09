@@ -1,11 +1,19 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">The Mongo Times</h1>
-        <a href="/" class="btn btn-danger btn-lg scrape">Home</a>>
+        <a class="btn btn-danger btn-lg" id="scrape" role="button">Scrape</a>>
     </div>
 </div>
 
 <div class="container-fluid articles">
+    {{#each result}}
+    <div class="article-list">
+        <h3>{{this.title}}</h3>
+        <p>{{this.summary}}</p>
+        <a href="{{this.link}}" target="_blank"> View Article </a>
+        <button type="button" class="btn btn-secondary" id="{{this._id}}">Leave a Note</button>
+    </div>
+    {{/each}}
 
 </div>
 <footer class="footer">
