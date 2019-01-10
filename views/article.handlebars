@@ -1,19 +1,28 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">The Mongo Times</h1>
-        <a class="btn btn-danger btn-lg" id="scrape" role="button">Scrape</a>>
+        <a class="btn btn-danger btn-lg" id="home" role="button">Home</a>>
     </div>
 </div>
 
 <div class="container-fluid articles">
-    {{#each result}}
     <div class="article-list">
-        <h3>{{this.title}}</h3>
-        <p>{{this.summary}}</p>
-        <a href="{{this.link}}" target="_blank"> View Article </a>
-        <button type="button" class="btn btn-secondary" id="{{this._id}}">Leave a Note</button>
+        <h3>{{result.title}}</h3>
+        <p>{{result.summary}}</p>
+        <a href="{{result.link}}" target="_blank"> View Article </a>
     </div>
-    {{/each}}
+    <div class="note-section">
+        <h3>{{result.note}}</h3>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="addNote">Add a Note</label>
+            <textarea class="form-control" id="addNote" rows="3"></textarea>
+        </div>
+        <button type="submit" id="addingNote" data-id="{{result._id}}" class="btn btn-primary">Submit</button>
+    </form>
+
+
 
 </div>
 <footer class="footer">
@@ -22,9 +31,7 @@
     </div>
 </footer>
 
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
     crossorigin="anonymous"></script>
