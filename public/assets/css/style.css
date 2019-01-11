@@ -1,5 +1,4 @@
 
-
 html {
     position: relative;
     min-height: 100%;
@@ -51,4 +50,17 @@ h3 {
     margin: 40px;
     border: 1px solid black;
     padding: 10px;
+}
+
+.btn-delete{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-add{
+    margin: 40px;
+}
+
+.note-section{
+    margin: 40px;
 }

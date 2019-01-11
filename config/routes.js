@@ -32,7 +32,6 @@ module.exports = function (router) {
                 // Using our Article model, create a new entry
                 // This effectively passes the result object to the entry (and the title and link)
                 var entry = new Article(result);
-
                 // Now, save that entry to the db
                 entry.save(function (err, doc) {
                     // Log any errors
@@ -76,7 +75,14 @@ module.exports = function (router) {
     });
 
 
-};
+    router.delete("/article/:id", function (req, res) {
+        db.Note.findByIdAndRemove(req.params.id).then(function (note) {
+            console.log(note + " Deleted")
+        }).catch(function (err) {
+            console.log(err);
+        })
+    })
 
+};
 
 

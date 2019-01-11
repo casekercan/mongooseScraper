@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">The Mongo Times</h1>
+        <h1 class="display-4">The Mongo Tech Times</h1>
         <a class="btn btn-danger btn-lg" id="home" role="button">Home</a>>
     </div>
 </div>
@@ -11,17 +11,24 @@
         <p>{{result.summary}}</p>
         <a href="{{result.link}}" target="_blank"> View Article </a>
     </div>
-    <div class="note-section">
-        <h3>{{result.note}}</h3>
+    <div class="note-section container-fluid">
+        <ul>
+            {{#each result.note}}
+            <li>{{this.summary}} <button type="button" class="btn-delete btn btn-secondary" data-id="{{this._id}}">Delete
+                    Note</button></li>
+            <br>
+            {{/each}}
+        </ul>
     </div>
-    <form>
-        <div class="form-group">
-            <label for="addNote">Add a Note</label>
-            <textarea class="form-control" id="addNote" rows="3"></textarea>
-        </div>
-        <button type="submit" id="addingNote" data-id="{{result._id}}" class="btn btn-primary">Submit</button>
-    </form>
-
+    <div class="container-fluid form-add">
+        <form>
+            <div class="form-group">
+                <label for="addNote">Add a Note</label>
+                <textarea class="form-control" id="addNote" rows="3"></textarea>
+            </div>
+            <button type="submit" id="addingNote" data-id="{{result._id}}" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
 
 </div>

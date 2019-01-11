@@ -29,4 +29,22 @@ $("#addingNote").on("click", function (event) {
 
     });
 
+});
+
+$(".btn-delete").on("click", function (event) {
+    event.preventDefault();
+    var id = $(this).attr("data-id");
+
+    $.ajax({
+        method: "DELETE",
+        url: "/article/" + id,
+        data: {
+            "delete": id
+        }
+    }).then(function (data) {
+        console.log(data);
+    });
+
+    window.location.reload();
+
 })
