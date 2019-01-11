@@ -26,7 +26,7 @@ app.use(router);
 
 
 //mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
-mongoose.connect("mongodb://<heroku_zx6hswws>:<GeGjgBeHL8jKXSS>@ds153824.mlab.com:53824/heroku_zx6hswws", { useNewUrlParser: ture });
+mongoose.connect("mongodb://heroku_zx6hswws:GeGjgBeHL8jKXSS@ds153824.mlab.com:53824/heroku_zx6hswws", { useNewUrlParser: ture });
 
 
 
