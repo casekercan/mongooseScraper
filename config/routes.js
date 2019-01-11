@@ -2,6 +2,7 @@ var db = require("../models");
 var axios = require("axios");
 var cheerio = require("cheerio");
 var Article = require("../models/Article");
+var Note = require("../models/Note");
 
 module.exports = function (router) {
     router.get("/", function (req, res) {
@@ -62,6 +63,7 @@ module.exports = function (router) {
     });
 
     router.post("/articles/:id", function (req, res) {
+
         db.Note.create(req.body).then(function (note) {
             return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: note._id }, { new: true })
         }).then(function (result) {
@@ -72,6 +74,10 @@ module.exports = function (router) {
         }).catch(function (err) {
             console.log(err);
         });
-    })
-}
+    });
+
+
+};
+
+
 

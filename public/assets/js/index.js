@@ -15,13 +15,13 @@ $("#home").on("click", function (event) {
 $("#addingNote").on("click", function (event) {
     event.preventDefault();
     var id = $(this).attr("data-id");
-    var body = $("#addNote").val().trim()
+    var note = $("#addNote").val().trim();
 
     $.ajax({
         method: "POST",
         url: "/articles/" + id,
         data: {
-            body: body
+            "summary": note
         }
     }).then(function (data) {
         console.log(data);

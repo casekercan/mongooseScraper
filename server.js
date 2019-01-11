@@ -4,11 +4,14 @@ var expressHandlebars = require("express-handlebars");
 var mongoose = require("mongoose");
 
 //set up port
-var PORT = process.env.PORT || 3000;
+var PORT = 3000;
 
 //initialize express
 var app = express();
 var router = express.Router();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //require routes
 require("./config/routes")(router);
