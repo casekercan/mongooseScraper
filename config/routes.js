@@ -63,9 +63,8 @@ module.exports = function (router) {
     });
 
     router.post("/articles/:id", function (req, res) {
-
         db.Note.create(req.body).then(function (note) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: note._id }, { new: true })
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { note: note._id } }, { new: true })
         }).then(function (result) {
             var article = {
                 result: result
