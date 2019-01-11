@@ -4,7 +4,7 @@ var expressHandlebars = require("express-handlebars");
 var mongoose = require("mongoose");
 
 //set up port
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //initialize express
 var app = express();
@@ -24,8 +24,11 @@ app.set("view engine", "handlebars");
 
 app.use(router);
 
+var CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
 
-mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
+mongoose.connect(CONNECTION_URI, { useMongoClient: true }).then(() => {
+    console.log('Connected to MongoDB.');
+}).catch(err => console.log(err));
 
 
 
